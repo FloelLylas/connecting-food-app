@@ -1,212 +1,96 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Waste Tracker</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 font-sans">
-  <!-- Home Screen -->
-  <div id="home" class="min-h-screen flex flex-col items-center justify-center bg-blue-500 text-white">
-    <img src="https://via.placeholder.com/100" alt="App Icon" class="mb-4" style="border-radius: 15px;">
-    <h1 class="text-4xl font-bold mb-6">Food Waste Tracker</h1>
-    <div class="space-x-4">
-      <a href="#untouched" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Intocados</a>
-      <a href="#touched" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Tocados</a>
-      <a href="#empty-trays" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Bandejas Vazias</a>
-      <a href="#loose-items" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Avulsos</a>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting Food</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <div id="home" class="min-h-screen flex flex-col items-center justify-center bg-blue-500 text-white">
+      <img src="logo.png" alt="Connecting Food Icon" class="mb-4" style="border-radius: 15px;">
+      <h1 class="text-4xl font-bold mb-6">Connecting Food</h1>
+      <div class="space-x-4">
+        <a href="#untouched" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Intocados</a>
+        <a href="#touched" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Tocados</a>
+        <a href="#empty-trays" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Bandejas Vazias</a>
+        <a href="#loose-items" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Avulsos</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Untouched Items Screen -->
-  <div id="untouched" class="min-h-screen p-4 bg-white hidden">
-    <h2 class="text-2xl font-bold mb-4">Itens Intocados</h2>
-    <form>
-      <div class="mb-4">
-        <label class="block text-gray-700">Data</label>
-        <input type="date" class="w-full p-2 border rounded">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Rota de Voo</label>
-        <select class="w-full p-2 border rounded">
-          <option>LIMGRU</option>
-          <option>MCOGRU</option>
-          <option>MADGRU</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Classe</label>
-        <select class="w-full p-2 border rounded">
-          <option>Econômica</option>
-          <option>Business</option>
-          <option>Crew</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Nº Trolley (TR)</label>
-        <input type="text" class="w-full p-2 border rounded" placeholder="Digite o número">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Intocados</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
-      </div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
-    </form>
-  </div>
+    <div id="untouched" class="min-h-screen p-4 bg-white hidden">
+      <h2 class="text-2xl font-bold mb-4">Itens Intocados</h2>
+      <form>
+        <div class="mb-4">
+          <label class="block text-gray-700">Data</label>
+          <input type="date" class="w-full p-2 border rounded">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Rota de Voo</label>
+          <select class="w-full p-2 border rounded">
+            <option>LIMGRU</option>
+            <option>MCOGRU</option>
+            <option>MADGRU</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Classe</label>
+          <select class="w-full p-2 border rounded">
+            <option>Econômica</option>
+            <option>Business</option>
+            <option>Crew</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Nº Trolley (TR)</label>
+          <input type="text" class="w-full p-2 border rounded" placeholder="Digite o número">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Quantidade Intocados</label>
+          <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+      </form>
+    </div>
 
-  <!-- Touched Items Screen -->
-  <div id="touched" class="min-h-screen p-4 bg-white hidden">
-    <h2 class="text-2xl font-bold mb-4">Itens Tocados</h2>
-    <form>
-      <div class="mb-4">
-        <label class="block text-gray-700">Data</label>
-        <input type="date" class="w-full p-2 border rounded">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Rota de Voo</label>
-        <select class="w-full p-2 border rounded">
-          <option>LIMGRU</option>
-          <option>MCOGRU</option>
-          <option>MADGRU</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Classe</label>
-        <select class="w-full p-2 border rounded">
-          <option>Econômica</option>
-          <option>Business</option>
-          <option>Crew</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Nº Trolley (TR)</label>
-        <input type="text" class="w-full p-2 border rounded" placeholder="Digite o número">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Tocados</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Peso (Gramas)</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Peso">
-      </div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
-    </form>
-  </div>
+    <div id="touched" class="min-h-screen p-4 bg-white hidden">
+      <h2 class="text-2xl font-bold mb-4">Itens Tocados</h2>
+      <form>
+        <div class="mb-4">
+          <label class="block text-gray-700">Data</label>
+          <input type="date" class="w-full p-2 border rounded">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Rota de Voo</label>
+          <select class="w-full p-2 border rounded">
+            <option>LIMGRU</option>
+            <option>MCOGRU</option>
+            <option>MADGRU</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Classe</label>
+          <select class="w-full p-2 border rounded">
+            <option>Econômica</option>
+            <option>Business</option>
+            <option>Crew</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Nº Trolley (TR)</label>
+          <input type="text" class="w-full p-2 border rounded" placeholder="Digite o número">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Quantidade Tocados</label>
+          <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Peso (Gramas)</label>
+          <input type="number" class="w-full p-2 border rounded" placeholder="Peso">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+      </form>
+    </div>
 
-  <!-- Empty Trays Screen -->
-  <div id="empty-trays" class="min-h-screen p-4 bg-white hidden">
-    <h2 class="text-2xl font-bold mb-4">Bandejas Vazias</h2>
-    <form>
-      <div class="mb-4">
-        <label class="block text-gray-700">Data</label>
-        <input type="date" class="w-full p-2 border rounded">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Rota de Voo</label>
-        <select class="w-full p-2 border rounded">
-          <option>LIMGRU</option>
-          <option>MCOGRU</option>
-          <option>MADGRU</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Bandejas Vazias</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
-      </div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
-    </form>
-  </div>
-
-  <!-- Loose Items Screen -->
-  <div id="loose-items" class="min-h-screen p-4 bg-white hidden">
-    <h2 class="text-2xl font-bold mb-4">Itens Avulsos</h2>
-    <form>
-      <div class="mb-4">
-        <label class="block text-gray-700">Data</label>
-        <input type="date" class="w-full p-2 border rounded">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Rota de Voo</label>
-        <select class="w-full p-2 border rounded">
-          <option>LIMGRU</option>
-          <option>MCOGRU</option>
-          <option>MADGRU</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Nome do Item Avulso</label>
-        <input type="text" class="w-full p-2 border rounded" placeholder="Ex: Geleia">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Intocados</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Tocados</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
-      </div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
-    </form>
-  </div>
-
-  <!-- Navigation Menu -->
-  <nav class="fixed bottom-0 w-full bg-blue-500 text-white p-2 flex justify-around">
-    <a href="#home" class="text-center">Home</a>
-    <a href="#untouched" class="text-center">Intocados</a>
-    <a href="#touched" class="text-center">Tocados</a>
-    <a href="#empty-trays" class="text-center">Bandejas</a>
-    <a href="#loose-items" class="text-center">Avulsos</a>
-  </nav>
-
-  <script>
-    document.querySelectorAll('a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelectorAll('div[id]').forEach(div => div.classList.add('hidden'));
-        document.getElementById(this.getAttribute('href').substring(1)).classList.remove('hidden');
-      });
-    });
-  </script>
-</body>
-</html>
+    <div id="empty-trays" class="min-h-screen p-4 bg-white hidden">
+      <h2 class="text-2xl font-bold mb-4">Bandejas Vazias</h2>

@@ -8,156 +8,156 @@
 </head>
 <body class="bg-gray-100 font-sans">
   <!-- Home Screen -->
-  <div id="home" class="min-h-screen flex flex-col items-center justify-center bg-blue-500 text-white pb-16">
-    <img src="cf-log.jpeg" alt="Connecting Food Logo" class="mb-4 h-24 w-24 rounded-2xl object-contain">
-    <h1 class="text-4xl font-bold mb-6">Connecting Food</h1>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#untouched" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Intocados</a>
-      <a href="#touched" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Tocados</a>
-      <a href="#empty-trays" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Bandejas Vazias</a>
-      <a href="#loose-items" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Itens Avulsos</a>
+  <div id="home" class="min-h-screen flex flex-col items-center justify-center bg-blue-500 text-white pb-24">
+    <img src="https://raw.githubusercontent.com/fjoellyas/connecting-food-app/main/cf-log.jpeg" alt="Connecting Food Logo" class="mb-6 h-32 w-32 rounded-2xl object-contain">
+    <h1 class="text-4xl font-bold mb-8">Connecting Food</h1>
+    <div class="flex flex-wrap justify-center gap-6">
+      <a href="#untouched" class="bg-white text-blue-500 px-6 py-3 rounded-lg text-lg">Itens Intocados</a>
+      <a href="#touched" class="bg-white text-blue-500 px-6 py-3 rounded-lg text-lg">Itens Tocados</a>
+      <a href="#empty-trays" class="bg-white text-blue-500 px-6 py-3 rounded-lg text-lg">Bandejas Vazias</a>
+      <a href="#loose-items" class="bg-white text-blue-500 px-6 py-3 rounded-lg text-lg">Itens Avulsos</a>
     </div>
   </div>
 
   <!-- Untouched Items Screen -->
-  <div id="untouched" class="min-h-screen p-4 bg-white hidden pb-16">
-    <h2 class="text-2xl font-bold mb-4">Itens Intocados</h2>
+  <div id="untouched" class="min-h-screen p-6 bg-white hidden pb-24">
+    <h2 class="text-2xl font-bold mb-6">Itens Intocados</h2>
     <form>
-      <div class="mb-4">
-        <label class="block text-gray-700">Data</label>
-        <input type="date" class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Data</label>
+        <input type="date" class="w-full p-3 border rounded-lg text-lg">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Rota de Voo</label>
-        <select class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Rota de Voo</label>
+        <select class="w-full p-3 border rounded-lg text-lg">
           <option>LIMGRU</option>
           <option>MCOGRU</option>
           <option>MADGRU</option>
         </select>
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Classe</label>
-        <select class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Classe</label>
+        <select class="w-full p-3 border rounded-lg text-lg">
           <option>Econômica</option>
           <option>Business</option>
           <option>Crew</option>
         </select>
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Nº Trolley (TR)</label>
-        <input type="text" class="w-full p-2 border rounded" placeholder="Digite o número">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Nº Trolley (TR)</label>
+        <input type="text" class="w-full p-3 border rounded-lg text-lg" placeholder="Digite o número">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Intocados</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Quantidade Intocados</label>
+        <input type="number" class="w-full p-3 border rounded-lg text-lg" placeholder="Quantidade">
       </div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+      <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg w-full">Enviar</button>
     </form>
   </div>
 
   <!-- Touched Items Screen -->
-  <div id="touched" class="min-h-screen p-4 bg-white hidden pb-16">
-    <h2 class="text-2xl font-bold mb-4">Itens Tocados</h2>
+  <div id="touched" class="min-h-screen p-6 bg-white hidden pb-24">
+    <h2 class="text-2xl font-bold mb-6">Itens Tocados</h2>
     <form>
-      <div class="mb-4">
-        <label class="block text-gray-700">Data</label>
-        <input type="date" class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Data</label>
+        <input type="date" class="w-full p-3 border rounded-lg text-lg">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Rota de Voo</label>
-        <select class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Rota de Voo</label>
+        <select class="w-full p-3 border rounded-lg text-lg">
           <option>LIMGRU</option>
           <option>MCOGRU</option>
           <option>MADGRU</option>
         </select>
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Classe</label>
-        <select class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Classe</label>
+        <select class="w-full p-3 border rounded-lg text-lg">
           <option>Econômica</option>
           <option>Business</option>
           <option>Crew</option>
         </select>
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Nº Trolley (TR)</label>
-        <input type="text" class="w-full p-2 border rounded" placeholder="Digite o número">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Nº Trolley (TR)</label>
+        <input type="text" class="w-full p-3 border rounded-lg text-lg" placeholder="Digite o número">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Tocados</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Quantidade Tocados</label>
+        <input type="number" class="w-full p-3 border rounded-lg text-lg" placeholder="Quantidade">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Peso (Gramas)</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Peso">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Peso (Gramas)</label>
+        <input type="number" class="w-full p-3 border rounded-lg text-lg" placeholder="Peso">
       </div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+      <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg w-full">Enviar</button>
     </form>
   </div>
 
   <!-- Empty Trays Screen -->
-  <div id="empty-trays" class="min-h-screen p-4 bg-white hidden pb-16">
-    <h2 class="text-2xl font-bold mb-4">Bandejas Vazias</h2>
+  <div id="empty-trays" class="min-h-screen p-6 bg-white hidden pb-24">
+    <h2 class="text-2xl font-bold mb-6">Bandejas Vazias</h2>
     <form>
-      <div class="mb-4">
-        <label class="block text-gray-700">Data</label>
-        <input type="date" class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Data</label>
+        <input type="date" class="w-full p-3 border rounded-lg text-lg">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Rota de Voo</label>
-        <select class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Rota de Voo</label>
+        <select class="w-full p-3 border rounded-lg text-lg">
           <option>LIMGRU</option>
           <option>MCOGRU</option>
           <option>MADGRU</option>
         </select>
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Bandejas Vazias</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Quantidade Bandejas Vazias</label>
+        <input type="number" class="w-full p-3 border rounded-lg text-lg" placeholder="Quantidade">
       </div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+      <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg w-full">Enviar</button>
     </form>
   </div>
 
   <!-- Loose Items Screen -->
-  <div id="loose-items" class="min-h-screen p-4 bg-white hidden pb-16">
-    <h2 class="text-2xl font-bold mb-4">Itens Avulsos</h2>
+  <div id="loose-items" class="min-h-screen p-6 bg-white hidden pb-24">
+    <h2 class="text-2xl font-bold mb-6">Itens Avulsos</h2>
     <form>
-      <div class="mb-4">
-        <label class="block text-gray-700">Data</label>
-        <input type="date" class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Data</label>
+        <input type="date" class="w-full p-3 border rounded-lg text-lg">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Rota de Voo</label>
-        <select class="w-full p-2 border rounded">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Rota de Voo</label>
+        <select class="w-full p-3 border rounded-lg text-lg">
           <option>LIMGRU</option>
           <option>MCOGRU</option>
           <option>MADGRU</option>
         </select>
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Nome do Item Avulso</label>
-        <input type="text" class="w-full p-2 border rounded" placeholder="Ex: Geleia">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Nome do Item Avulso</label>
+        <input type="text" class="w-full p-3 border rounded-lg text-lg" placeholder="Ex: Geleia">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Intocados</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Quantidade Intocados</label>
+        <input type="number" class="w-full p-3 border rounded-lg text-lg" placeholder="Quantidade">
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700">Quantidade Tocados</label>
-        <input type="number" class="w-full p-2 border rounded" placeholder="Quantidade">
+      <div class="mb-6">
+        <label class="block text-gray-700 text-lg">Quantidade Tocados</label>
+        <input type="number" class="w-full p-3 border rounded-lg text-lg" placeholder="Quantidade">
       </div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+      <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg w-full">Enviar</button>
     </form>
   </div>
 
   <!-- Navigation Menu -->
-  <nav class="fixed bottom-0 w-full bg-blue-500 text-white p-2 flex justify-around items-center">
-    <a href="#home" class="text-center flex-1 py-2 hover:bg-blue-600">Home</a>
-    <a href="#untouched" class="text-center flex-1 py-2 hover:bg-blue-600">Intocados</a>
-    <a href="#touched" class="text-center flex-1 py-2 hover:bg-blue-600">Tocados</a>
-    <a href="#empty-trays" class="text-center flex-1 py-2 hover:bg-blue-600">Bandejas</a>
-    <a href="#loose-items" class="text-center flex-1 py-2 hover:bg-blue-600">Avulsos</a>
+  <nav class="fixed bottom-0 w-full bg-blue-500 text-white p-3 flex justify-around items-center">
+    <a href="#home" class="text-center flex-1 py-3 text-lg hover:bg-blue-600">Home</a>
+    <a href="#untouched" class="text-center flex-1 py-3 text-lg hover:bg-blue-600">Intocados</a>
+    <a href="#touched" class="text-center flex-1 py-3 text-lg hover:bg-blue-600">Tocados</a>
+    <a href="#empty-trays" class="text-center flex-1 py-3 text-lg hover:bg-blue-600">Bandejas</a>
+    <a href="#loose-items" class="text-center flex-1 py-3 text-lg hover:bg-blue-600">Avulsos</a>
   </nav>
 
   <script>
